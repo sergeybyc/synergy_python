@@ -6,16 +6,27 @@
 
 print('Введите строку без пробелов:')
 line = input()
-count = int(len(line) / 2)
-first_part = line[0:count]
-second_part = line[count+1:len(line)][::-1]
-# print(first_part)
-# print(second_part)
-if first_part == second_part:
-	print('yes')
-else:
-	print('no')
 
+if int(len(line) % 2) != 0:
+	count = int(len(line) / 2)
+	first_part = line[0:count]
+	second_part = line[count+1:len(line)][::-1]
+	# print(first_part)
+	# print(second_part)
+	if first_part == second_part:
+		print('yes')
+	else:
+		print('no')
+else:
+	count = int(len(line) / 2)
+	first_part = line[0:count]
+	second_part = line[count:len(line)][::-1]
+	# print(first_part)
+	# print(second_part)
+	if first_part == second_part:
+		print('yes')
+	else:
+		print('no')
 
 
 # Задание №2

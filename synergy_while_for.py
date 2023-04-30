@@ -19,9 +19,10 @@ print('Введите натуральное число X')
 X = int(input())
 if X <= 2000000000:
 	count_of_dividers = 0
-	for i in range(X - 1, 1, -1):
-	    if (X % i == 0):
-	        count_of_dividers += 1
+	for i in range(1, X+1):
+		# print(i)
+		if (X % i == 0):
+			count_of_dividers += 1
 	print("Количество делителей равно:", count_of_dividers)
 else:
 	print('Число за пределами 2e9')
@@ -36,8 +37,9 @@ A = int(input())
 print('Введите целое число B')
 B = int(input())
 if A <= B:
-	print(f'Числа в отрезке {A} и {B}:')
+	print(f'Четные числа в отрезке {A} и {B}:')
 	for _ in range(A, B):
-		print(_)
+		if (_ % 2 == 0):
+			print(_)
 else:
 	print('Вы не выполнили условие A <= B')

@@ -110,7 +110,7 @@ class Cherepashka:
 
 def play(x, y, s):
 	print('\nВыберите действие:\n1 - go_up\n2 - go_down\n3 - go_left\n4 - go_right\n5 - evolve(увеличить шаг на 1)\
-		\n6 - degrade(уменьшить шаг на 1)\n7 - count_moves(подсчитать количество ходов до точки)')
+		\n6 - degrade(уменьшить шаг на 1)\n7 - count_moves(подсчитать количество ходов до точки)\n0 - Выход')
 	select = int(input())
 	if select == 1:
 		animal.go_up(s)
@@ -130,6 +130,8 @@ def play(x, y, s):
 		print('Введите y:')
 		y2 = int(input())
 		animal.count_moves(x2,y2)
+	elif select == 0:
+		return
 	else:
 		print('Команда не распознана')
 	animal.locate()

@@ -2,11 +2,12 @@ print('Задание №1')
 import math
 q = int(input('Введите целое число: '))
 fact_q = math.factorial(q)
-print(f'Факториал числа {q}: {fact_q}\nСписок:')
+print(f'\nФакториал числа {q}: {fact_q}\n\nСписок:')
 for _ in range(fact_q, 0, -1):
   print(f'{math.factorial(_)}')
 
-print('Задание №2')
+print('\n'+'='*30)
+print('\nЗадание №2')
 def read(pets):
   # print(f'Текущая база:\n{pets}')
   if len(pets.keys()) > 0:
@@ -17,7 +18,9 @@ def read(pets):
     for p_id, p_info in pets[find_id].items():
       # print("\nPerson ID:", p_id)
       find_name = p_id
+    print('\n'+'='*30)
     print(f"\nРезультат поиска:\nЭто {pets[find_id][find_name]['Вид питомца']} по кличке {find_name}. Возраст питомца: {pets[find_id][find_name]['Возраст питомца']}. Имя владельца {pets[find_id][find_name]['Имя владельца']}")
+    print('\n'+'='*30)
       # for key in p_info:
       #   print(key + ':', p_info[key])
       # print(f"Это {pets['Вид питомца']} по кличке {pets[0]}.\n Возраст питомца: {pets['Возраст питомца']}. Имя владельца: {pets['Имя владельца']}")

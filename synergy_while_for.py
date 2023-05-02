@@ -38,7 +38,7 @@ print('Введите целое число B')
 B = int(input())
 if A <= B:
 	print(f'Четные числа в отрезке {A} и {B}:')
-	for _ in range(A, B):
+	for _ in range(A, B+1):
 		if (_ % 2 == 0):
 			print(_)
 else:

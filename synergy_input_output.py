@@ -48,12 +48,22 @@ add_pet()
 print('\nЗадание №2\n')
 
 def show_stages():
-	a1 = 'Australopithecus'
-	a2 = 'Homo habilis'
-	a3 = 'Homo erectus'
-	a4 = 'Homo neanderthalensis'
-	a5 = 'Homo sapiens sapiens'
+	# a1 = 'Australopithecus'
+	# a2 = 'Homo habilis'
+	# a3 = 'Homo erectus'
+	# a4 = 'Homo neanderthalensis'
+	# a5 = 'Homo sapiens sapiens'
+	
+	print('Введите стадии развития человека')
+	a1 = input('Введите 1 стадию: ')
+	a2 = input('Введите 2 стадию: ')
+	a3 = input('Введите 3 стадию: ')
+	a4 = input('Введите 4 стадию: ')
+	a5 = input('Введите 5 стадию: ')
+
 	return a1, a2, a3, a4, a5
+
 stages = show_stages()
+print('Ваш ответ:')
 print(*stages, sep=" => ")
 

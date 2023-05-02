@@ -7,8 +7,9 @@ import random
 def createArray(x):
     r = 0
     array = []
+    print(f'Введите {x} чисел по одному числу на строку:')
     for i in range(x):
-        array.append(random.randint(1,10000))
+        array.append(input())
         r += 1
     print(f"Массив:")
     for _ in array:
@@ -32,19 +33,35 @@ else:
 # Выведите N чисел - измененный массив.
 
 print("Задание №2\nВведите N:")
-y = int(input())
+
+while True:
+	try:
+		y = int(input())
+		if y:
+			break
+	except ValueError:
+		print('Ошибка! Введите число N:')
+	
 
 def createArray_2(y):
-	r = 0
+	
 	array = []
-	for i in range(y):
-		array.append(random.randint(1,100000))
-		r += 1
+
+	while True:
+		array = input('Введите числа через пробел: ')
+		arr = array.split()
+		
+		if len(arr) != y:
+			print(f'Вы ввели не {y} чисел!')
+
+		else:
+			break
+
 	print(f"Массив:")
-	for _ in array:
+	for _ in arr:
 		print(_)
 
-	lst = array
+	lst = arr
 	shift = 1
 	lst = lst[-shift:] + lst[:-shift]
 	print('Сдвиг массива')
@@ -64,63 +81,66 @@ else:
 # Во вторую строку вводится число n (1 ≤ n ≤ 100) - количество рыбаков. В следующие N строк вводится по одному числу Ai (1 ≤ Ai ≤ m) - вес каждого путешественника. 
 # Программа должна вывести одно число - минимальное количество лодок, необходимое для переправки всех рыбаков на противоположный берег.
 
-class IllegalException(Exception):
-    pass
-
-def task_3(repeat=False):
-	if repeat:
-		print("Попробуйте еще раз:")
-
-	try:
-		m = int(input('Введите m (максимальная масса лодки) При условии 1 ≤ m ≤ 10e6\n'))
-
-		if m < 1 or m > 1000000:
-			print('Ошибка! Недопустимая масса лодки!')
-			raise IllegalException
-			
-		else:		
-			n = int(input('Введите n (количество рыбаков) при условии 1 ≤ n ≤ 100\n'))
-			if n < 1 or n > 100:
-				print('Ошибка! Недопустимое количество рыбаков!')
-				raise IllegalException
-			
-			else:
-				createArray_3(m, n)
+import random
+import math
+def enterValues():
 	
-	except IllegalException:
-		task_3(True)
+	while True:
 
-def createArray_3(m,n):
+		try:
+			m = int(input('Введите m (максимальная масса лодки) При условии 1 ≤ m ≤ 10e6\n'))
+
+			if m < 1 or m > 1000000:
+				print('Ошибка! Недопустимая масса лодки!')
+				
+			else:		
+				n = int(input('Введите n (количество рыбаков) при условии 1 ≤ n ≤ 100\n'))
+				
+				if n < 1 or n > 100:
+					print('Ошибка! Недопустимое количество рыбаков!')
+					
+				else:
+					Calculate(m, n)
+					break
+
+		except ValueError:
+			print('Error')
+
+def Calculate(m,n):
 	r = 1
-	a = []
+	a = [59, 22, 74, 42, 5, 100, 66, 42, 96, 10]
 	# Вес рыбаков
-	for i in range(n):
-		a.append(random.randint(1,m))
+	# for i in range(n):
+	# 	a.append(random.randint(1,m))
 		
 	print(f"\nГенерируем рыбаков весом 1 ≤ Ai ≤ {m}...\n\nРыбаки:")
 	for _ in a:
 		print(f'Рыбак № {r} - {_} кг')
 		r += 1
+	min_lodok = 0
+	median = -1
+	if len(a) > 1:
+		a.sort()
+		for element in a:
+			if element * 2 <= m:
+				median = element
+		print(median)
+		if median < 0:
+			median = a[0]
 
-	# Новый список
-	b = []
+		while median in a:
+			if len(a) == 1:
+				a.remove(a[-1])
+				min_lodok += 1
+			elif a[0] + a[-1] <= m:
+				a.remove(a[-1])
+				a.remove(a[0])
+				min_lodok += 1
+			else:
+				a.remove(a[-1])
+				min_lodok += 1
+	min_lodok += math.ceil(len(a) / 2)
+	
+	print(f'\nМинимально лодок: {min_lodok}')
 
-	for x in range(len(a)):
-		# Проверяем что элемент + наименьший элемент меньше веса лодки
-	    if a[x] + min(a) <= m:
-	    	# Записываем подходящую пару в новый список
-	        b += [[a[x], min(a)]]
-	        # Плюсуем к найденным элементам вес, что бы исключить их из следущих проходов
-	        a[x] += m
-	        a[a.index(min(a))] += m
-	    else:
-	    	# Если не нашлась пара, вносим одного рыбака в список
-	        if a[x] > m:
-	            continue
-	        else:
-	            b += [[a[x]]]
-
-	print(f'\nМинимальное количество лодок: {len(b)}')
-	# print(b)
-
-task_3()
+enterValues()

@@ -108,11 +108,23 @@ def enterValues():
 
 def Calculate(m,n):
 	r = 1
-	a = [59, 22, 74, 42, 5, 100, 66, 42, 96, 10]
+	a = []
 	# Вес рыбаков
 	# for i in range(n):
 	# 	a.append(random.randint(1,m))
+	array = []
+	print(f'Всего рыбаков: {n}. Введите вес каждого рыбака в отдельной строке при условии 1 ≤ Ai ≤ m')
+	
+	for i in range(n):
+		while True:
+			weight = int(input())
 		
+			if weight < m:
+				a.append(weight)
+				break
+			else:
+				print('Ошибка! Не верный вес')
+
 	print(f"\nГенерируем рыбаков весом 1 ≤ Ai ≤ {m}...\n\nРыбаки:")
 	for _ in a:
 		print(f'Рыбак № {r} - {_} кг')
@@ -124,7 +136,7 @@ def Calculate(m,n):
 		for element in a:
 			if element * 2 <= m:
 				median = element
-		print(median)
+		# print(median)
 		if median < 0:
 			median = a[0]
 

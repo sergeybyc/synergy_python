@@ -1,10 +1,20 @@
 print('Задание №1')
-import math
+
+def fact(q):
+  fact_q = 1
+  for i in range(2, q+1):
+      fact_q *= i
+  print(fact_q)
+  return fact_q
+
 q = int(input('Введите целое число: '))
-fact_q = math.factorial(q)
-print(f'\nФакториал числа {q}: {fact_q}\n\nСписок:')
+print('Факториал:')
+fact_q = fact(q)
+
+print('Список факториалов:')
 for _ in range(fact_q, 0, -1):
-  print(f'{math.factorial(_)}')
+  fact(_)
+
 
 print('\n'+'='*30)
 print('\nЗадание №2')

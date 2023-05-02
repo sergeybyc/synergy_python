@@ -53,100 +53,44 @@ def compare_arrays(array_1, array_2):
 				break
 	print(f'Повторяющихся значений: {len(new_array)}')
 
-def createArrays(x, y):
+def createArrays():
     array_1 = []
-    for i in range(x):
-        array_1.append(random.randint(1,10))
-    print(f"Массив 1:")
-    for _ in array_1:
-        print(_)
     array_2 = []
-    for i in range(y):
-        array_2.append(random.randint(1,10))
-    print(f"Массив 2:")
-    for _ in array_2:
-        print(_)
+    x = int(input('Введите длину первого списка чисел: '))
+    y = int(input('Введите длину второго списка чисел: '))
+    print(f'Заполняем первый список из {x} чисел')
+    for _ in range(x):
+    	array_1.append(input('Введите число: '))
+    print(f'Заполняем второй список из {y} чисел')
+    for _ in range(y):
+    	array_2.append(input('Введите число: '))
     compare_arrays(array_1, array_2)
 
 print("\nЗадание №2")
-x = int(input('Введите длину первого списка '))
-y = int(input('Введите длину второго списка '))
-if x > 0 and x < 100000 and y > 0 and y < 100000:
-	array1=(createArrays(x, y))
-else:
-	print('Число вне диапазона')
+createArrays()
 
 
 # Задание №3
 # Во входную строку водится последовательность чисел через пробел. Для каждого числа выведите слово ”YES” (в отдельной строке), 
 # если это число ранее встречалось в последовательности или ”NO”, если не встречалось.
 
-class Numbers:
-	def __init__(self, current_numbers, base_of_numbers, unique_numbers):
-		self.current_numbers = current_numbers
-		self.base_of_numbers = base_of_numbers
-		self.unique_numbers = unique_numbers
+def check_unique(numbers):
+	check_mn = set()
+	for current_number in numbers:
+		if current_number in check_mn:
+			print(f'{current_number} - YES')
+		else:			
+			print(f'{current_number} - NO')
+		check_mn.add(current_number)
 
-	def check_unique(self, base_of_numbers, current_numbers):
-		for _ in current_numbers:
-			if _ in unique_numbers:
-				print(f'{_} - YES')
-		for _ in base_of_numbers:
-			if _ not in unique_numbers:
-				unique_numbers.append(_)
-				print(f'{_} - NO')
 
-		self.start()
+def start():
+	numbers = []
+	print('Вводите числа через пробел:')
+	numbers = list(map(int, input().split()))
+	check_mn = set()
+	check_unique(numbers)
 
-	def write_lst(self, current_numbers):
-		for _ in current_numbers:
-			base_of_numbers.append(_)
-		self.check_unique(base_of_numbers, current_numbers)
 
-	def start(self):
-		print('Вводите числа через пробел:')
-		current_numbers = list(map(int, input().split()))
-		self.write_lst(current_numbers)
-
-current_numbers = []
-base_of_numbers = []
-unique_numbers = []
 print('\nПроверка на уникальность. YES - число встречалось, NO - число НЕ встречалось.')
-j = Numbers(current_numbers, base_of_numbers, unique_numbers)
-j.start()
-
-
-
-
-
-
-
-
-
-
-
-# class IllegalException(Exception):
-#     pass
-
-# def task_3(repeat=False):
-# 	if repeat:
-# 		print("Попробуйте еще раз:")
-
-# 	try:
-# 		m = int(input('Введите m (максимальная масса лодки) При условии 1 ≤ m ≤ 10e6\n'))
-
-# 		if m < 1 or m > 1000000:
-# 			print('Ошибка! Недопустимая масса лодки!')
-# 			raise IllegalException
-			
-# 		else:		
-# 			n = int(input('Введите n (количество рыбаков) при условии 1 ≤ n ≤ 100\n'))
-# 			if n < 1 or n > 100:
-# 				print('Ошибка! Недопустимое количество рыбаков!')
-# 				raise IllegalException
-			
-# 			else:
-# 				createArray_3(m, n)
-	
-# 	except IllegalException:
-# 		task_3(True)
+start()

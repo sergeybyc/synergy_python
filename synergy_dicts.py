@@ -68,12 +68,24 @@ def add_pet():
 
     elif kind_of_animal.isalpha():
       break
-
+  years = ''
+  if pet_age == 1 or (pet_age > 20 and str(pet_age)[1] == '1'):
+    years = 'год'
+  elif (pet_age > 20 and str(pet_age)[1] == '1') or (pet_age > 20 and str(pet_age)[1] == '2')\
+  or (pet_age > 20 and str(pet_age)[1] == '3') or (pet_age > 20 and str(pet_age)[1] == '4')\
+  or (pet_age > 1 and pet_age < 5):
+    years = 'года'
+  elif (pet_age > 4 and pet_age < 20) or (pet_age > 20 and str(pet_age)[1] == '5') or (pet_age > 20 and str(pet_age)[1] == '6') \
+  or (pet_age > 20 and str(pet_age)[1] == '7')\
+  or (pet_age > 20 and str(pet_age)[1] == '8')\
+  or (pet_age > 20 and str(pet_age)[1] == '9') or (pet_age > 20 and str(pet_age)[1] == '0')\
+  or pet_age == 0:
+    years = 'лет'
   pets = {pet_name: {'Вид питомца': kind_of_animal, 'Возраст питомца': pet_age, 'Имя владельца': pet_owner}}
-  return pets, pet_name
+  return pets, pet_name, years
 
-pets, pet_name = add_pet()
-print(f"Это {pets[pet_name]['Вид питомца']} по кличке {pet_name}. Возраст питомца: {pets[pet_name]['Возраст питомца']}. Имя владельца: {pets[pet_name]['Имя владельца']}")
+pets, pet_name, years = add_pet()
+print(f"Это {pets[pet_name]['Вид питомца']} по кличке {pet_name}. Возраст питомца: {pets[pet_name]['Возраст питомца']} {years}. Имя владельца: {pets[pet_name]['Имя владельца']}")
 
 
 # Задание №2

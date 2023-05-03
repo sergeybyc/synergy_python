@@ -8,12 +8,13 @@ class Kassa:
 	def __init__(self, current_money):
 		self.current_money = current_money
 
+	def count_1000(self):
+		count1000 = self.current_money // 1000
+		print(f'\nТысяч в кассе: {count1000}\n')		
+
 	def top_up(self, X):
 		self.current_money = self.current_money + X
 		return
-	
-	def count_1000():
-		pass
 	
 	def take_away(self, X):
 		if X > self.current_money:
@@ -26,7 +27,8 @@ class Kassa:
 		print(f'\nДенег в кассе: {qiwi.current_money}')
 		print('\nДля пополнения введите 1:')
 		print('Для снятия введите 2:')
-		print('Остановить терминал 3:')
+		print('Отобразить сколько целых тысяч осталось в кассе 3:')
+		print('Остановить терминал 0:')
 		ask = int(input())
 		if ask == 1:
 			print('Введите сумму для пополнения:')
@@ -39,6 +41,8 @@ class Kassa:
 			self.take_away(summ)
 			self.Terminal()
 		elif ask == 3:
+			self.count_1000()
+		elif ask == 0:
 			print('Выход')
 			return
 		else:

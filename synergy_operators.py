@@ -31,29 +31,20 @@ print(result)
 # Для решения задачи создайте переменную и в неё положите слово с помощью input()
 # А также определите количество каждой из этих гласных букв Если какой-то из перечисленных букв нет - Выведите False
 
-
 word = input(str('Введите слово из латинских букв '))
 word_lst = []
 for _ in range(len(word)):
-	word_lst.append(word[_])
-print(f'Вы ввели: {word_lst}')
-
+	if word[_] != ' ':
+		word_lst.append(word[_])
 lst = ['a', 'e', 'i', 'o', 'u']
-print(f'Ищем: {lst}')
-
 glasnie = []
 
-# from itertools import zip_longest
-# for i, j in zip_longest(word_lst, lst):
-# 	if i == j:
-# 		glasnie.append(i)
-
 for i in word_lst:
-	for j in lst:
-		if i == j:
-			glasnie.append(i)
-
-print(f'Совпадение: {glasnie}')
+	if i in lst:
+		glasnie.append(i)
+	else:
+		print(f'{i} - False')
 
 print(f'Гласных: {len(glasnie)}')
 print(f'Согласных: {len(word_lst)-len(glasnie)}')
+

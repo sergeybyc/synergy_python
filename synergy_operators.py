@@ -33,6 +33,7 @@ print(result)
 
 word = input(str('Введите слово из латинских букв '))
 word_lst = []
+letters_counter = {}
 for _ in range(len(word)):
 	if word[_] != ' ':
 		word_lst.append(word[_])
@@ -42,11 +43,17 @@ glasnie = []
 for i in word_lst:
 	if i in lst:
 		glasnie.append(i)
+		if i in letters_counter:
+			letters_counter[i] += 1
+		else:
+			letters_counter[i] = 1
 	else:
 		print(f'{i} - False')
 
 print(f'Гласных: {len(glasnie)}')
 print(f'Согласных: {len(word_lst)-len(glasnie)}')
+for i, j in letters_counter.items():
+	print(i, "-", j)
 
 # Задание №3
 # Два инвестора - Майкл и Иван хотят вложиться в стартап. Фаундеры сказали, что минимальная сумма инвестиций - X долларов, больше инвестировать можно сколько угодно. 
@@ -59,10 +66,13 @@ B = int(input('Введите B (Денег у Ивана): '))
 
 if A >= X and B >= X:
 	print(2)
+	
 elif A >= X:
-	print('Ivan')
-elif B >= X:
 	print('Mike')
+
+elif B >= X:
+	print('Ivan')
+
 elif A + B >= X:
 	print(1)
 else:
